@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto - Aliança</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            background-color: #f9f9f9;
+        }
+
+        header img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .product-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .image-gallery {
+            position: relative;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 100%;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 8px 12px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+
+        .arrow:hover {
+            background: rgba(200, 200, 200, 0.9);
+        }
+
+        .arrow-left {
+            left: -40px;
+        }
+
+        .arrow-right {
+            right: -40px;
+        }
+
+        /* Linha de separação */
+        .divider {
+            width: 90%;
+            margin: 12px auto;
+            border: none;
+            border-top: 1px solid #333; /* cinza escuro quase preto */
+        }
+
+        /* Avaliação abaixo da linha */
+        .rating {
+            margin-top: 10px;
+            text-align: left;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .stars {
+            color: #ffcc00;
+            font-size: 18px;
+            margin-left: 6px;
+        }
+
+        .product-title {
+            margin-top: 25px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product-code {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .price-section {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        .price-section strong {
+            display: block;
+            font-size: 20px;
+            color: #c40000;
+            margin-bottom: 10px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            padding: 14px 40px; /* botão mais largo */
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #28a745; /* verde */
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #218838;
+        }
+
+        .description {
+            margin-top: 20px;
+        }
+
+        .description h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .description p, .description li {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .info-table {
+            margin-top: 10px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .info-table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-table td:first-child {
+            font-weight: bold;
+            width: 180px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="cabeçario.jpg" alt="Cabeçalho do site">
+    </header>
+
+    <div class="product-container">
+        
+        <!-- Galeria com setas -->
+        <div class="image-gallery">
+            <span class="arrow arrow-left">&#10094;</span>
+            <img src="1.jpg" alt="Imagem do Produto" class="product-image">
+            <span class="arrow arrow-right">&#10095;</span>
+        </div>
+
+        <!-- Linha de separação -->
+        <hr class="divider">
+
+        <!-- Avaliação abaixo da linha -->
+        <div class="rating">
+            4.8 
+            <span class="stars">★★★★☆</span>
+        </div>
+
+        <h1 class="product-title" id="productName">Aliança Anatômica de Ouro 2k 750 e Ouro Branco 2k 0750 Largura 5.0mm Espessura 1.5mm</h1>
+        <p class="product-code">Código: ALF3101</p>
+
+        <div class="price-section">
+            <strong id="productPrice">Por R$11.616,91</strong>
+
+            <!-- Botão Comprar -->
+            <a href="#" id="buyButton" class="buy-button">Comprar agora</a>
+
+            <p>ou R$10.455,22 <b>(10% de desconto à vista)</b></p>
+            <p>ou 10x R$1.559,70 com juros de 2.99% a.m.</p>
+        </div>
+
+        <div class="description">
+            <h3>Descrição sobre o produto</h3>
+            <p><b>Descrição | Perguntas Frequentes | Comentários a este produto: 78</b></p>
+            
+            <h3>Informações do produto</h3>
+            <table class="info-table">
+                <tr>
+                    <td>REF:</td>
+                    <td>ALF3101</td>
+                </tr>
+                <tr>
+                    <td>Tipo:</td>
+                    <td>Aliança</td>
+                </tr>
+                <tr>
+                    <td>Espessura:</td>
+                    <td>1.5 mm</td>
+                </tr>
+                <tr>
+                    <td>Largura:</td>
+                    <td>5.0 mm</td>
+                </tr>
+                <tr>
+                    <td>Peso:</td>
+                    <td>7.00 g</td>
+                </tr>
+                <tr>
+                    <td>Material:</td>
+                    <td>Ouro 2k 750</td>
+                </tr>
+                <tr>
+                    <td>Prazo de entrega:</td>
+                    <td>De 3 a 10 dias úteis após a confirmação do pedido e pagamento.</td>
+                </tr>
+                <tr>
+                    <td>Garantia:</td>
+                    <td>Permanente da Fábrica</td>
+                </tr>
+                <tr>
+                    <td>Observação:</td>
+                    <td>A aliança é fabricada sob encomenda, selecione o tamanho correto do seu aro.</td>
+                </tr>
+                <tr>
+                    <td>Origem:</td>
+                    <td>Made in Brazil</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Captura os valores do produto
+        const productName = document.getElementById("productName").innerText;
+        const productPrice = document.getElementById("productPrice").innerText;
+
+        // Define o link do botão com parâmetros
+        document.getElementById("buyButton").href = `s.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+    </script>
+
+</body>
+</html>
