@@ -1,265 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto - Aliança</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.5;
-            background-color: #f9f9f9;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Em Breve — Curso de Criação de Sites</title>
+  <meta name="description" content="Nosso curso de criação de sites está sendo desenvolvido do zero. Inscreva-se para receber novidades e lançamento." />
+  <style>
+    :root{
+      --accent:#0eb8c0;
+      --dark:#0a0a0a;
+      --muted:#6b7280;
+      --bg:#0f1724;
+      --card:#0b1220;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071026 0%, #0f1724 100%);color:whitesmoke}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px}
 
-        header img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    .card{width:100%;max-width:1100px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:20px;padding:36px;box-shadow:0 10px 40px rgba(2,6,23,0.6);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.04);display:grid;grid-template-columns:1fr 420px;gap:28px}
 
-        .product-container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
+    /* Left column */
+    .hero h1{font-size:48px;line-height:1.02;margin:0 0 12px;color:var(--accent)}
+    .hero h2{font-size:28px;margin:0 0 18px;color:#ffffff}
+    .lead{font-size:16px;color:var(--muted);margin-bottom:22px}
+    .big-note{font-weight:700;color:#fff;font-size:20px;margin-bottom:8px}
 
-        .image-gallery {
-            position: relative;
-            max-width: 400px;
-            margin: auto;
-            text-align: center;
-        }
+    .features{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+    .feature{display:flex;gap:12px;align-items:flex-start}
+    .badge{min-width:54px;height:54px;border-radius:12px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:18px}
+    .feature p{margin:0;font-size:15px;color:#dbeafe}
 
-        .product-image {
-            width: 100%;
-            border-radius: 6px;
-            display: block;
-        }
+    .countdown{display:flex;gap:12px;margin-top:22px}
+    .countdown .item{background:rgba(255,255,255,0.04);padding:12px 14px;border-radius:10px;text-align:center;min-width:72px}
+    .countdown .num{font-size:22px;font-weight:700}
+    .countdown .label{font-size:12px;color:var(--muted)}
 
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 28px;
-            font-weight: bold;
-            color: #333;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            padding: 8px 12px;
-            cursor: pointer;
-            user-select: none;
-            transition: background 0.3s ease;
-        }
+    /* Right column */
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    .panel h3{margin:0 0 10px;color:#fff}
+    .notify{display:flex;gap:8px;flex-direction:column}
+    input[type="email"]{padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;font-size:16px}
+    button.primary{background:var(--accent);border:none;color:#042225;padding:12px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+    .small{font-size:13px;color:var(--muted)}
+    .progress{height:8px;background:rgba(255,255,255,0.03);border-radius:8px;margin-top:14px;overflow:hidden}
+    .bar{height:100%;width:0%;background:linear-gradient(90deg,#34e0d6,#0aa4b0)}
 
-        .arrow:hover {
-            background: rgba(200, 200, 200, 0.9);
-        }
+    .socials{display:flex;gap:8px;margin-top:14px}
+    .socials a{padding:10px 12px;border-radius:8px;background:rgba(255,255,255,0.02);color:#fff;text-decoration:none;font-weight:600}
 
-        .arrow-left {
-            left: -40px;
-        }
+    footer{margin-top:18px;font-size:13px;color:var(--muted)}
 
-        .arrow-right {
-            right: -40px;
-        }
-
-        /* Linha de separação */
-        .divider {
-            width: 90%;
-            margin: 12px auto;
-            border: none;
-            border-top: 1px solid #333; /* cinza escuro quase preto */
-        }
-
-        /* Avaliação abaixo da linha */
-        .rating {
-            margin-top: 10px;
-            text-align: left;
-            font-size: 16px;
-            color: #444;
-        }
-
-        .stars {
-            color: #ffcc00;
-            font-size: 18px;
-            margin-left: 6px;
-        }
-
-        .product-title {
-            margin-top: 25px;
-            font-size: 22px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .product-code {
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 15px;
-        }
-
-        .price-section {
-            margin: 15px 0;
-            font-size: 16px;
-        }
-
-        .price-section strong {
-            display: block;
-            font-size: 20px;
-            color: #c40000;
-            margin-bottom: 10px;
-        }
-
-        .buy-button {
-            display: inline-block;
-            padding: 14px 40px; /* botão mais largo */
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #28a745; /* verde */
-            border: none;
-            border-radius: 6px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .buy-button:hover {
-            background-color: #218838;
-        }
-
-        .description {
-            margin-top: 20px;
-        }
-
-        .description h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #444;
-        }
-
-        .description p, .description li {
-            font-size: 15px;
-            color: #555;
-        }
-
-        .info-table {
-            margin-top: 10px;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        .info-table td {
-            padding: 6px 8px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .info-table td:first-child {
-            font-weight: bold;
-            width: 180px;
-        }
-    </style>
+    /* Responsive */
+    @media (max-width:960px){.card{grid-template-columns:1fr;max-width:760px}}
+    @media (max-width:480px){.hero h1{font-size:34px}.hero h2{font-size:20px}}
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="card" role="main">
+      <div class="hero">
+        <div class="big-note">EM BREVE</div>
+        <h1>Curso de Criação de Sites — Do Zero ao Portfólio</h1>
+        <h2>Aprenda a construir sites profissionais, hospedar grátis e vender seus projetos</h2>
+        <p class="lead">Estamos desenvolvendo o curso do zero — conteúdo atualizado, passo a passo e com foco em resultados. Em poucos dias liberaremos as primeiras vídeo-aulas, templates e o acesso ao nosso grupo exclusivo no Telegram.</p>
 
-    <header>
-        <img src="cabeçario.jpg" alt="Cabeçalho do site">
-    </header>
-
-    <div class="product-container">
-        
-        <!-- Galeria com setas -->
-        <div class="image-gallery">
-            <span class="arrow arrow-left">&#10094;</span>
-            <img src="1.jpg" alt="Imagem do Produto" class="product-image">
-            <span class="arrow arrow-right">&#10095;</span>
+        <div class="features">
+          <div class="feature"><div class="badge">1</div><p><strong>Projetos práticos:</strong> Do layout à publicação — crie sites completos para seu portfólio.</p></div>
+          <div class="feature"><div class="badge">2</div><p><strong>Hospedagem gratuita:</strong> Publicação sem custo em plataformas reais (GitHub Pages, Vercel, etc.).</p></div>
+          <div class="feature"><div class="badge">3</div><p><strong>Integrações seguras:</strong> Testes com ambientes de pagamento em modo sandbox e boas práticas.</p></div>
         </div>
 
-        <!-- Linha de separação -->
-        <hr class="divider">
-
-        <!-- Avaliação abaixo da linha -->
-        <div class="rating">
-            4.8 
-            <span class="stars">★★★★☆</span>
+        <div class="countdown" aria-live="polite" aria-atomic="true">
+          <div class="item"><div class="num" id="days">--</div><div class="label">Dias</div></div>
+          <div class="item"><div class="num" id="hours">--</div><div class="label">Horas</div></div>
+          <div class="item"><div class="num" id="minutes">--</div><div class="label">Minutos</div></div>
+          <div class="item"><div class="num" id="seconds">--</div><div class="label">Segs</div></div>
         </div>
 
-        <h1 class="product-title" id="productName">Aliança Anatômica de Ouro 2k 750 e Ouro Branco 2k 0750 Largura 5.0mm Espessura 1.5mm</h1>
-        <p class="product-code">Código: ALF3101</p>
+        <p style="margin-top:18px;color:var(--muted);font-size:13px">Quer garantir um desconto de lançamento e acesso antecipado? Inscreva-se à direita e receba novidades direto no seu e-mail.</p>
 
-        <div class="price-section">
-            <strong id="productPrice">Por R$11.616,91</strong>
+        <footer>⚠️ Conteúdo 100% legal e focado em ensino. Uso responsável obrigatório.</footer>
+      </div>
 
-            <!-- Botão Comprar -->
-            <a href="#" id="buyButton" class="buy-button">Comprar agora</a>
+      <aside class="panel">
+        <h3>Receba aviso no lançamento</h3>
+        <p class="small">Insira seu e-mail e seja o primeiro a saber quando o curso for lançado. Prometemos enviar apenas atualizações úteis.</p>
 
-            <p>ou R$10.455,22 <b>(10% de desconto à vista)</b></p>
-            <p>ou 10x R$1.559,70 com juros de 2.99% a.m.</p>
+        <form class="notify" id="notifyForm" onsubmit="return false;">
+          <label for="email" class="small">E-mail</label>
+          <input id="email" type="email" placeholder="seu@exemplo.com" required />
+          <div style="display:flex;gap:8px;align-items:center">
+            <button id="btnNotify" class="primary">Me avise</button>
+            <div style="flex:1"></div>
+          </div>
+          <div id="msg" class="small" style="margin-top:10px;color:#9beadf"></div>
+        </form>
+
+        <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
+
+        <div class="socials" aria-hidden="false">
+          <a href="#" onclick="openTelegram()">Telegram</a>
+          <a href="#" onclick="openInstagram()">Instagram</a>
+          <a href="#" onclick="openWhats()">WhatsApp</a>
         </div>
 
-        <div class="description">
-            <h3>Descrição sobre o produto</h3>
-            <p><b>Descrição | Perguntas Frequentes | Comentários a este produto: 78</b></p>
-            
-            <h3>Informações do produto</h3>
-            <table class="info-table">
-                <tr>
-                    <td>REF:</td>
-                    <td>ALF3101</td>
-                </tr>
-                <tr>
-                    <td>Tipo:</td>
-                    <td>Aliança</td>
-                </tr>
-                <tr>
-                    <td>Espessura:</td>
-                    <td>1.5 mm</td>
-                </tr>
-                <tr>
-                    <td>Largura:</td>
-                    <td>5.0 mm</td>
-                </tr>
-                <tr>
-                    <td>Peso:</td>
-                    <td>7.00 g</td>
-                </tr>
-                <tr>
-                    <td>Material:</td>
-                    <td>Ouro 2k 750</td>
-                </tr>
-                <tr>
-                    <td>Prazo de entrega:</td>
-                    <td>De 3 a 10 dias úteis após a confirmação do pedido e pagamento.</td>
-                </tr>
-                <tr>
-                    <td>Garantia:</td>
-                    <td>Permanente da Fábrica</td>
-                </tr>
-                <tr>
-                    <td>Observação:</td>
-                    <td>A aliança é fabricada sob encomenda, selecione o tamanho correto do seu aro.</td>
-                </tr>
-                <tr>
-                    <td>Origem:</td>
-                    <td>Made in Brazil</td>
-                </tr>
-            </table>
-        </div>
+        <p class="small" style="margin-top:10px">Versão beta: já temos 0% do curso pronto. Vamos atualizando a barra conforme o conteúdo é criado.</p>
+      </aside>
     </div>
+  </div>
 
-    <script>
-        // Captura os valores do produto
-        const productName = document.getElementById("productName").innerText;
-        const productPrice = document.getElementById("productPrice").innerText;
+  <script>
+    // Countdown: ajusta para 30 dias à frente a partir do primeiro carregamento
+    (function(){
+      const saved = localStorage.getItem('launchTarget');
+      let target;
+      if(saved){ target = new Date(saved); }
+      else { target = new Date(Date.now() + 30*24*60*60*1000); localStorage.setItem('launchTarget', target.toISOString()); }
 
-        // Define o link do botão com parâmetros
-        document.getElementById("buyButton").href = `s.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
-    </script>
+      function pad(n){return String(n).padStart(2,'0');}
+      function tick(){
+        const now = new Date();
+        const diff = Math.max(0, target - now);
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff/(1000*60*60))%24);
+        const minutes = Math.floor((diff/(1000*60))%60);
+        const seconds = Math.floor((diff/1000)%60);
+        document.getElementById('days').textContent = pad(days);
+        document.getElementById('hours').textContent = pad(hours);
+        document.getElementById('minutes').textContent = pad(minutes);
+        document.getElementById('seconds').textContent = pad(seconds);
+      }
+      tick(); setInterval(tick,1000);
+    })();
 
+    // Simula progresso do curso em % salvo no localStorage
+    (function(){
+      const bar = document.getElementById('progressBar');
+      const saved = parseInt(localStorage.getItem('courseProgress')||'0',10);
+      let progress = saved;
+      bar.style.width = progress + '%';
+      // função pública para debug (pode remover)
+      window.__setProgress = function(p){progress = Math.max(0,Math.min(100,Number(p)||0)); bar.style.width = progress + '%'; localStorage.setItem('courseProgress', progress);}
+    })();
+
+    // Formulário de notificação (salva no localStorage e simula envio)
+    document.getElementById('btnNotify').addEventListener('click', function(){
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg');
+      if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Digite um e-mail válido'; msg.style.color = '#ff7b7b'; return; }
+      // salva localmente
+      const list = JSON.parse(localStorage.getItem('notifyList')||'[]');
+      if(list.includes(email)){ msg.textContent = 'E-mail já cadastrado — obrigado!'; msg.style.color = '#ffd36b'; return; }
+      list.push(email); localStorage.setItem('notifyList', JSON.stringify(list));
+      msg.textContent = 'Obrigado! Você será avisado no lançamento.'; msg.style.color = '#9beadf';
+      // anima a barra um pouco pra feedback
+      const bar = document.getElementById('progressBar');
+      const cur = parseInt(localStorage.getItem('courseProgress')||'0',10);
+      const nxt = Math.min(100, cur + 3);
+      bar.style.width = nxt + '%'; localStorage.setItem('courseProgress', nxt);
+    });
+
+    // Links sociais de exemplo (abre em nova guia)
+    function openTelegram(){ window.open('https://t.me/','_blank'); }
+    function openInstagram(){ window.open('https://instagram.com/','_blank'); }
+    function openWhats(){ window.open('https://wa.me/','_blank'); }
+  </script>
 </body>
 </html>
