@@ -3,169 +3,290 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Em Breve — Curso de Criação de Sites</title>
-  <meta name="description" content="Nosso curso de criação de sites está sendo desenvolvido do zero. Inscreva-se para receber novidades e lançamento." />
+  <title>Rifa Solidária — Participe e Concorra a R$1.000</title>
+  <meta name="description" content="Rifa: bilhete R$10 — prêmio R$1.000. São 200 números. Compre pelo WhatsApp +55 85 9678-7670" />
   <style>
     :root{
-      --accent:#0eb8c0;
-      --dark:#0a0a0a;
-      --muted:#6b7280;
       --bg:#0f1724;
       --card:#0b1220;
-      --glass: rgba(255,255,255,0.03);
+      --accent:#0eb8c0;
+      --muted:#aab4c0;
+      --green:#22c55e;
+      --white:#ffffff;
+      --radius:12px;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071026 0%, #0f1724 100%);color:whitesmoke}
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px}
-
-    .card{width:100%;max-width:1100px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:20px;padding:36px;box-shadow:0 10px 40px rgba(2,6,23,0.6);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.04);display:grid;grid-template-columns:1fr 420px;gap:28px}
-
-    /* Left column */
-    .hero h1{font-size:48px;line-height:1.02;margin:0 0 12px;color:var(--accent)}
-    .hero h2{font-size:28px;margin:0 0 18px;color:#ffffff}
-    .lead{font-size:16px;color:var(--muted);margin-bottom:22px}
-    .big-note{font-weight:700;color:#fff;font-size:20px;margin-bottom:8px}
-
-    .features{display:flex;flex-direction:column;gap:10px;margin-top:16px}
-    .feature{display:flex;gap:12px;align-items:flex-start}
-    .badge{min-width:54px;height:54px;border-radius:12px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:18px}
-    .feature p{margin:0;font-size:15px;color:#dbeafe}
-
-    .countdown{display:flex;gap:12px;margin-top:22px}
-    .countdown .item{background:rgba(255,255,255,0.04);padding:12px 14px;border-radius:10px;text-align:center;min-width:72px}
-    .countdown .num{font-size:22px;font-weight:700}
-    .countdown .label{font-size:12px;color:var(--muted)}
-
-    /* Right column */
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
-    .panel h3{margin:0 0 10px;color:#fff}
-    .notify{display:flex;gap:8px;flex-direction:column}
-    input[type="email"]{padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;font-size:16px}
-    button.primary{background:var(--accent);border:none;color:#042225;padding:12px 14px;border-radius:10px;font-weight:700;cursor:pointer}
-    .small{font-size:13px;color:var(--muted)}
-    .progress{height:8px;background:rgba(255,255,255,0.03);border-radius:8px;margin-top:14px;overflow:hidden}
-    .bar{height:100%;width:0%;background:linear-gradient(90deg,#34e0d6,#0aa4b0)}
-
-    .socials{display:flex;gap:8px;margin-top:14px}
-    .socials a{padding:10px 12px;border-radius:8px;background:rgba(255,255,255,0.02);color:#fff;text-decoration:none;font-weight:600}
-
-    footer{margin-top:18px;font-size:13px;color:var(--muted)}
-
-    /* Responsive */
-    @media (max-width:960px){.card{grid-template-columns:1fr;max-width:760px}}
-    @media (max-width:480px){.hero h1{font-size:34px}.hero h2{font-size:20px}}
+    body{margin:0;min-height:100vh;background:linear-gradient(180deg,#071026,#071834);color:var(--white);display:flex;align-items:center;justify-content:center;padding:24px}
+    .container{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:28px;box-shadow:0 12px 40px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04)}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06a6a9);display:flex;align-items:center;justify-content:center;font-weight:800;color:#042225;font-size:20px}
+    h1{margin:0;font-size:22px}
+    p.lead{margin:8px 0 18px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    .card{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .info-row{display:flex;justify-content:space-between;align-items:center;margin:10px 0}
+    .big{font-size:20px;font-weight:700}
+    .muted{color:var(--muted);font-size:14px}
+    label{display:block;font-size:14px;margin-bottom:6px;color:var(--muted)}
+    input[type="number"]{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white);font-size:16px}
+    .inline{display:flex;gap:8px;align-items:center}
+    .btn-wa{display:inline-flex;gap:10px;align-items:center;background:#25D366;border-radius:10px;padding:12px 14px;color:#042225;font-weight:700;border:none;cursor:pointer;text-decoration:none}
+    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white);padding:10px 12px;border-radius:8px;cursor:pointer}
+    .progress-wrap{background:rgba(255,255,255,0.04);border-radius:10px;padding:8px}
+    .progress{background:rgba(0,0,0,0.2);height:18px;border-radius:8px;overflow:hidden}
+    .progress .bar{height:100%;width:40%;background:linear-gradient(90deg,var(--green),#16a34a);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042225}
+    .stats{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+    .stat{background:rgba(255,255,255,0.03);padding:10px;border-radius:8px;min-width:120px;text-align:center}
+    .foot{margin-top:14px;font-size:13px;color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+    @media (max-width:880px){
+      .grid{grid-template-columns:1fr}
+      .btn-wa{width:100%;justify-content:center}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card" role="main">
-      <div class="hero">
-        <div class="big-note">EM BREVE</div>
-        <h1>Curso de Criação de Sites — Do Zero ao Portfólio</h1>
-        <h2>Aprenda a construir sites profissionais, hospedar grátis e vender seus projetos</h2>
-        <p class="lead">Estamos desenvolvendo o curso do zero — conteúdo atualizado, passo a passo e com foco em resultados. Em poucos dias liberaremos as primeiras vídeo-aulas, templates e o acesso ao nosso grupo exclusivo no Telegram.</p>
+  <main class="container" role="main" aria-label="Página da rifa">
+    <header>
+      <div class="logo">RIFA</div>
+      <div>
+        <h1>Rifa: Ganhe R$1.000 — Bilhete R$10</h1>
+        <p class="lead">São <strong id="totalNumbers">200</strong> números. Compre seu bilhete agora pelo WhatsApp e concorra ao prêmio em dinheiro.</p>
+      </div>
+    </header>
 
-        <div class="features">
-          <div class="feature"><div class="badge">1</div><p><strong>Projetos práticos:</strong> Do layout à publicação — crie sites completos para seu portfólio.</p></div>
-          <div class="feature"><div class="badge">2</div><p><strong>Hospedagem gratuita:</strong> Publicação sem custo em plataformas reais (GitHub Pages, Vercel, etc.).</p></div>
-          <div class="feature"><div class="badge">3</div><p><strong>Integrações seguras:</strong> Testes com ambientes de pagamento em modo sandbox e boas práticas.</p></div>
+    <section class="grid" aria-labelledby="rifa-info">
+      <!-- left -->
+      <div>
+        <div class="card" id="rifa-info">
+          <div class="info-row">
+            <div>
+              <div class="muted">Valor do bilhete</div>
+              <div class="big">R$ <span id="ticketPrice">10</span>,00</div>
+            </div>
+            <div class="center">
+              <div class="muted" style="text-align:right">Prêmio</div>
+              <div class="big" style="text-align:right">R$ 1.000,00</div>
+            </div>
+          </div>
+
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0" />
+
+          <div>
+            <label for="quantity">Quantos bilhetes deseja comprar?</label>
+            <div class="inline">
+              <input id="quantity" type="number" min="1" max="200" value="1" aria-label="Quantidade de bilhetes" />
+              <button id="btnCalc" class="btn-secondary" title="Calcular">Calcular</button>
+            </div>
+            <p class="muted" style="margin-top:8px">Preço total: <strong>R$ <span id="totalPrice">10</span>,00</strong></p>
+          </div>
+
+          <div style="margin-top:12px">
+            <label class="muted">Seu número preferido (opcional)</label>
+            <input id="preferred" type="text" placeholder="Ex.: 045, 123 ..." aria-label="Número preferido (opcional)" />
+            <p class="muted" style="font-size:13px;margin-top:6px">Observação: escolha será confirmada pelo organizador (sujeito à disponibilidade).</p>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+            <!-- WhatsApp button opens chat with message -->
+            <a id="whatsappBtn" class="btn-wa" href="#" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5L3.5 21.5" stroke="#042225" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.07 4.93C20.5 6.36 21.28 8.24 21.28 10.2C21.28 14.66 17.36 18.58 12.9 18.58C11.08 18.58 9.4 18.07 8.01 17.17L4.5 18.5 5.83 14.99C4.93 13.6 4.42 11.92 4.42 10.1 4.42 5.64 8.34 1.72 12.8 1.72 14.76 1.72 16.64 2.5 18.07 3.93Z" stroke="#042225" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" fill="#25D366"/></svg>
+              Comprar pelo WhatsApp
+            </a>
+
+            <button id="btnShare" class="btn-secondary" title="Compartilhar">Compartilhar</button>
+          </div>
+
+          <p class="foot">Ao clicar em "Comprar pelo WhatsApp" você será direcionado para o aplicativo/website do WhatsApp para confirmar a compra com o responsável. Pagamento e confirmação final são feitas via conversa.</p>
         </div>
 
-        <div class="countdown" aria-live="polite" aria-atomic="true">
-          <div class="item"><div class="num" id="days">--</div><div class="label">Dias</div></div>
-          <div class="item"><div class="num" id="hours">--</div><div class="label">Horas</div></div>
-          <div class="item"><div class="num" id="minutes">--</div><div class="label">Minutos</div></div>
-          <div class="item"><div class="num" id="seconds">--</div><div class="label">Segs</div></div>
+        <div style="margin-top:16px" class="card">
+          <h3 style="margin:0 0 8px">Regras rápidas</h3>
+          <ul style="margin:0 0 0 18px;color:var(--muted)">
+            <li>Preço do bilhete: R$10 (cada).</li>
+            <li>Prêmio único: R$1.000 para 1 sortudo.</li>
+            <li>Total de números: 200 (um número = um bilhete).</li>
+            <li>Sorteio será realizado e comprovado (data será informada no grupo/contato).</li>
+            <li>Organizador: contato via WhatsApp +55 85 9678-7670.</li>
+          </ul>
         </div>
-
-        <p style="margin-top:18px;color:var(--muted);font-size:13px">Quer garantir um desconto de lançamento e acesso antecipado? Inscreva-se à direita e receba novidades direto no seu e-mail.</p>
-
-        <footer>⚠️ Conteúdo 100% legal e focado em ensino. Uso responsável obrigatório.</footer>
       </div>
 
-      <aside class="panel">
-        <h3>Receba aviso no lançamento</h3>
-        <p class="small">Insira seu e-mail e seja o primeiro a saber quando o curso for lançado. Prometemos enviar apenas atualizações úteis.</p>
-
-        <form class="notify" id="notifyForm" onsubmit="return false;">
-          <label for="email" class="small">E-mail</label>
-          <input id="email" type="email" placeholder="seu@exemplo.com" required />
-          <div style="display:flex;gap:8px;align-items:center">
-            <button id="btnNotify" class="primary">Me avise</button>
-            <div style="flex:1"></div>
+      <!-- right panel -->
+      <aside class="card" aria-label="Progresso e detalhes">
+        <h3 style="margin-top:0">Progresso da rifa</h3>
+        <div class="progress-wrap" aria-hidden="false">
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40" aria-label="Progresso da rifa">
+            <div class="bar" id="progressBar" style="width:40%;">40%</div>
           </div>
-          <div id="msg" class="small" style="margin-top:10px;color:#9beadf"></div>
-        </form>
-
-        <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
-
-        <div class="socials" aria-hidden="false">
-          <a href="#" onclick="openTelegram()">Telegram</a>
-          <a href="#" onclick="openInstagram()">Instagram</a>
-          <a href="#" onclick="openWhats()">WhatsApp</a>
         </div>
 
-        <p class="small" style="margin-top:10px">Versão beta: já temos 0% do curso pronto. Vamos atualizando a barra conforme o conteúdo é criado.</p>
+        <div class="stats">
+          <div class="stat">
+            <div class="muted">Total</div>
+            <div class="big"><span id="statTotal">200</span></div>
+          </div>
+          <div class="stat">
+            <div class="muted">Vendidos</div>
+            <div class="big"><span id="statSold">80</span></div>
+          </div>
+          <div class="stat">
+            <div class="muted">Restantes</div>
+            <div class="big"><span id="statRemain">120</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <h4 style="margin:4px 0 8px">Contato</h4>
+          <p class="muted" style="margin:0 0 8px">Fale com o organizador pelo WhatsApp:</p>
+          <p style="margin:0 0 10px;font-weight:700">+55 85 9678-7670</p>
+          <p class="muted" style="font-size:13px;margin-bottom:6px">Instagram / WhatsApp: use para tirar dúvidas e confirmar números.</p>
+
+          <div style="display:flex;gap:8px">
+            <a id="waQuick" class="btn-wa" href="#" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+            <button id="btnCopyPhone" class="btn-secondary">Copiar número</button>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top:12px;font-size:13px">Dica: envie o número preferido e quantidade na mensagem para agilizar a reserva.</p>
       </aside>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script>
-    // Countdown: ajusta para 30 dias à frente a partir do primeiro carregamento
-    (function(){
-      const saved = localStorage.getItem('launchTarget');
-      let target;
-      if(saved){ target = new Date(saved); }
-      else { target = new Date(Date.now() + 30*24*60*60*1000); localStorage.setItem('launchTarget', target.toISOString()); }
+    // Configurações iniciais
+    const TOTAL = 200;
+    const PRICE = 10; // reais por bilhete
+    // Inicial: 40% vendido
+    let sold = Math.round(TOTAL * 0.40); // 80
+    let progressPercent = Math.round((sold / TOTAL) * 100);
 
-      function pad(n){return String(n).padStart(2,'0');}
-      function tick(){
-        const now = new Date();
-        const diff = Math.max(0, target - now);
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff/(1000*60*60))%24);
-        const minutes = Math.floor((diff/(1000*60))%60);
-        const seconds = Math.floor((diff/1000)%60);
-        document.getElementById('days').textContent = pad(days);
-        document.getElementById('hours').textContent = pad(hours);
-        document.getElementById('minutes').textContent = pad(minutes);
-        document.getElementById('seconds').textContent = pad(seconds);
+    // Elementos
+    const statTotal = document.getElementById('statTotal');
+    const statSold = document.getElementById('statSold');
+    const statRemain = document.getElementById('statRemain');
+    const progressBar = document.getElementById('progressBar');
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceEl = document.getElementById('totalPrice');
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    const waQuick = document.getElementById('waQuick');
+    const preferredInput = document.getElementById('preferred');
+    const btnCalc = document.getElementById('btnCalc');
+    const btnCopyPhone = document.getElementById('btnCopyPhone');
+
+    // Phone for WhatsApp link (no symbols). Use international format without '+' or dashes
+    const PHONE_NO = '558596787670'; // +55 85 9678-7670 sanitized
+
+    function refreshStats(){
+      statTotal.textContent = TOTAL;
+      statSold.textContent = sold;
+      statRemain.textContent = Math.max(0, TOTAL - sold);
+      progressPercent = Math.round((sold / TOTAL) * 100);
+      progressBar.style.width = progressPercent + '%';
+      progressBar.textContent = progressPercent + '%';
+      progressBar.parentElement.setAttribute('aria-valuenow', progressPercent);
+    }
+
+    function calcTotal(){
+      const q = Number(quantityInput.value) || 1;
+      const qty = Math.max(1, Math.min(TOTAL - sold, q)); // can't buy more than remaining
+      const total = qty * PRICE;
+      totalPriceEl.textContent = total.toFixed(0);
+      return {qty, total};
+    }
+
+    // Build whatsapp message and open in new tab/window
+    function openWhatsApp(qty, preferred){
+      const priceTotal = qty * PRICE;
+      let text = `Olá, quero comprar ${qty} bilhete(s) da rifa (R$ ${priceTotal.toFixed(0)}).`;
+      if(preferred && preferred.trim().length) text += ` Números preferidos: ${preferred.trim()}.`;
+      text += ` Meu contato: `;
+      // optionally user can append their phone in chat
+      const encoded = encodeURIComponent(text);
+      const url = `https://wa.me/${PHONE_NO}?text=${encoded}`;
+      window.open(url, '_blank');
+    }
+
+    // initial render
+    refreshStats();
+    calcTotal();
+
+    // actions
+    btnCalc.addEventListener('click', function(){
+      const {qty} = calcTotal();
+      // feedback if trying to buy more than remaining
+      const remaining = TOTAL - sold;
+      if(qty > remaining){
+        alert(`Só restam ${remaining} bilhetes disponíveis.`);
+        quantityInput.value = remaining;
+        calcTotal();
+        return;
       }
-      tick(); setInterval(tick,1000);
-    })();
-
-    // Simula progresso do curso em % salvo no localStorage
-    (function(){
-      const bar = document.getElementById('progressBar');
-      const saved = parseInt(localStorage.getItem('courseProgress')||'0',10);
-      let progress = saved;
-      bar.style.width = progress + '%';
-      // função pública para debug (pode remover)
-      window.__setProgress = function(p){progress = Math.max(0,Math.min(100,Number(p)||0)); bar.style.width = progress + '%'; localStorage.setItem('courseProgress', progress);}
-    })();
-
-    // Formulário de notificação (salva no localStorage e simula envio)
-    document.getElementById('btnNotify').addEventListener('click', function(){
-      const email = document.getElementById('email').value.trim();
-      const msg = document.getElementById('msg');
-      if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Digite um e-mail válido'; msg.style.color = '#ff7b7b'; return; }
-      // salva localmente
-      const list = JSON.parse(localStorage.getItem('notifyList')||'[]');
-      if(list.includes(email)){ msg.textContent = 'E-mail já cadastrado — obrigado!'; msg.style.color = '#ffd36b'; return; }
-      list.push(email); localStorage.setItem('notifyList', JSON.stringify(list));
-      msg.textContent = 'Obrigado! Você será avisado no lançamento.'; msg.style.color = '#9beadf';
-      // anima a barra um pouco pra feedback
-      const bar = document.getElementById('progressBar');
-      const cur = parseInt(localStorage.getItem('courseProgress')||'0',10);
-      const nxt = Math.min(100, cur + 3);
-      bar.style.width = nxt + '%'; localStorage.setItem('courseProgress', nxt);
     });
 
-    // Links sociais de exemplo (abre em nova guia)
-    function openTelegram(){ window.open('https://t.me/','_blank'); }
-    function openInstagram(){ window.open('https://instagram.com/','_blank'); }
-    function openWhats(){ window.open('https://wa.me/','_blank'); }
+    // when clicking WhatsApp Comprar
+    whatsappBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      const {qty} = calcTotal();
+      const preferred = preferredInput.value;
+      const remaining = TOTAL - sold;
+      if(qty > remaining){
+        alert(`Erro: só restam ${remaining} bilhetes disponíveis.`);
+        return;
+      }
+      // open chat
+      openWhatsApp(qty, preferred);
+      // opcional: simular que foram vendidos (aumenta a barra localmente)
+      // Atualiza vendidos localmente para feedback (não salva em servidor)
+      sold += qty;
+      if(sold > TOTAL) sold = TOTAL;
+      refreshStats();
+      // Se quiser persistir entre recargas, poderia usar localStorage (opcional)
+    });
+
+    // quick open WA
+    waQuick.addEventListener('click', function(e){
+      e.preventDefault();
+      const msg = encodeURIComponent("Olá, tenho uma dúvida sobre a rifa.");
+      const url = `https://wa.me/${PHONE_NO}?text=${msg}`;
+      window.open(url, '_blank');
+    });
+
+    // copiar número
+    btnCopyPhone.addEventListener('click', function(){
+      const phone = '+55 85 9678-7670';
+      navigator.clipboard?.writeText(phone).then(function(){
+        alert('Número copiado: ' + phone);
+      }).catch(function(){
+        prompt('Copie o número:', phone);
+      });
+    });
+
+    // permitir Enter para calcular/atualizar
+    quantityInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ btnCalc.click(); }
+    });
+
+    // recalcular quando muda quantidade
+    quantityInput.addEventListener('change', calcTotal);
+    quantityInput.addEventListener('input', calcTotal);
+
+    // share button (nativo)
+    document.getElementById('btnShare').addEventListener('click', async function(){
+      const shareData = {
+        title: 'Rifa: Ganhe R$1.000 — bilhete R$10',
+        text: 'Participe da rifa: bilhete R$10. Prêmio R$1.000. São 200 números. Compre pelo WhatsApp +55 85 9678-7670',
+        url: location.href
+      };
+      if(navigator.share){
+        try { await navigator.share(shareData); }
+        catch(err){ alert('Não foi possível compartilhar: ' + err.message); }
+      } else {
+        // fallback
+        prompt('Copie este texto para compartilhar:', shareData.text + ' ' + shareData.url);
+      }
+    });
   </script>
 </body>
 </html>
