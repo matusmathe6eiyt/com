@@ -1,94 +1,137 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Bem-vindo</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
-
-  <!-- SEO -->
-  <meta name="description" content="Site oficial - continue navegando com segurança.">
-  <meta name="keywords" content="site seguro, bem-vindo, digital, oficial">
-  <meta name="author" content="Seu Nome ou Marca">
-
-  <!-- Segurança -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mensagem de Boas-vindas</title>
+  <meta name="description" content="Mensagem: Seja bem-vindo!" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #4CAF50, #2E7D32);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
+    :root{
+      --bg1: #0f172a;
+      --bg2: #0b3b2e;
+      --card: #ffffff;
+      --accent: #ff005d;
+      --text: #0b1220;
     }
-
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+    html,body{height:100%;margin:0;font-family:Inter, Arial, Helvetica, sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));display:flex;align-items:center;justify-content:center;color:#fff}
+    .card{
+      width:min(820px,92%);
+      background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.94));
+      color:var(--text);
+      border-radius:14px;
+      padding:28px;
+      box-shadow:0 10px 40px rgba(2,6,23,0.6);
+      text-align:center;
+      transform:translateY(0);
+      transition:transform .25s ease;
     }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
+    .card:hover{transform:translateY(-6px)}
+    h1{font-size:26px;margin:0 0 10px}
+    p.message{
+      font-size:18px;
+      line-height:1.5;
+      margin:10px 0 22px;
+      color:#1b2430;
+      background:linear-gradient(90deg, rgba(255,240,240,0.9), rgba(240,255,250,0.9));
+      padding:16px;border-radius:10px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
     }
-
-    .pulse-button {
-      background-color: #FFD600;
-      color: #000;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 15px 40px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      animation: pulse 1.5s infinite;
-      box-shadow: 0 0 15px rgba(255, 214, 0, 0.6);
-      transition: transform 0.2s;
+    .controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:600;
+      background:var(--accent);color:#fff;text-decoration:none;
+      box-shadow:0 6px 18px rgba(255,0,93,0.18);transition:transform .14s ease;
     }
-
-    .pulse-button:hover {
-      transform: scale(1.1);
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 15px rgba(255, 214, 0, 0.6);
-      }
-      50% {
-        transform: scale(1.07);
-        box-shadow: 0 0 25px rgba(255, 214, 0, 0.9);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 15px rgba(255, 214, 0, 0.6);
-      }
+    .btn.secondary{background:transparent;color:var(--text);border:2px solid rgba(10,10,10,0.06)}
+    .btn:active{transform:translateY(2px)}
+    .note{font-size:13px;color:#6b7280;margin-top:14px}
+    @media (max-width:480px){
+      h1{font-size:20px}
+      p.message{font-size:16px}
+      .btn{width:100%;justify-content:center}
+      .controls{flex-direction:column}
     }
   </style>
 </head>
 <body>
-  <h1>Seja Bem-vindo!</h1>
-  <p>Clique no botão abaixo para continuar</p>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title">Mensagem para o TikTok</h1>
 
-  <!-- Botão com id -->
-  <button class="pulse-button" id="continueBtn" type="button">
-    Continuar
-  </button>
+    <!-- Mensagem exibida -->
+    <p class="message" id="welcomeText">
+      Seja bem-vindo! Sou o Tik Tok Matheus — peço que me siga para ajudarmos a crescer nossa nova plataforma
+    </p>
 
-  <!-- Script externo -->
-  <script src="main.js" defer></script>
+    <!-- Controles: copiar e seguir -->
+    <div class="controls" role="group" aria-label="Ações">
+      <!-- Botão copiar -->
+      <button class="btn" id="copyBtn" type="button" title="Copiar mensagem para a área de transferência">
+        Copiar mensagem
+      </button>
+
+      <!-- Link para seguir (substitua '#' pelo link do seu perfil) -->
+      <a class="btn" id="followBtn" href="#" target="_blank" rel="noopener noreferrer" title="Abrir perfil">
+        Seguir (abrir perfil)
+      </a>
+
+      <!-- Botão para baixar a mensagem como .txt -->
+      <button class="btn secondary" id="downloadBtn" type="button" title="Baixar mensagem em arquivo .txt">
+        Baixar .txt
+      </button>
+    </div>
+
+    <p class="note" id="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    (function () {
+      const copyBtn = document.getElementById('copyBtn');
+      const downloadBtn = document.getElementById('downloadBtn');
+      const textEl = document.getElementById('welcomeText');
+      const statusEl = document.getElementById('status');
+      const followBtn = document.getElementById('followBtn');
+
+      const message = textEl.textContent.trim();
+
+      copyBtn.addEventListener('click', async () => {
+        try {
+          // copiar para a área de transferência
+          await navigator.clipboard.writeText(message);
+          statusEl.textContent = 'Mensagem copiada para a área de transferência ✅';
+          setTimeout(()=> statusEl.textContent = '', 3000);
+        } catch (err) {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = message;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); statusEl.textContent = 'Mensagem copiada (fallback) ✅'; }
+          catch(e){ statusEl.textContent = 'Não foi possível copiar automaticamente — selecione o texto manualmente.'; }
+          document.body.removeChild(ta);
+          setTimeout(()=> statusEl.textContent = '', 3500);
+        }
+      });
+
+      downloadBtn.addEventListener('click', () => {
+        const blob = new Blob([message], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'mensagem-tiktok.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        statusEl.textContent = 'Arquivo baixado ✅';
+        setTimeout(()=> statusEl.textContent = '', 3000);
+      });
+
+      // se quiser, substitua o href do botão "Seguir" em tempo de execução
+      // followBtn.href = 'https://www.tiktok.com/@seuusuario';
+    })();
+  </script>
 </body>
 </html>
