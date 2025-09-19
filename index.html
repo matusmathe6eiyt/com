@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Bem-vindo</title>
 
-  <!-- Favicon (coloque seu logo em PNG ou ICO na pasta) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
 
-  <!-- SEO Básico -->
+  <!-- SEO -->
   <meta name="description" content="Site oficial - continue navegando com segurança.">
   <meta name="keywords" content="site seguro, bem-vindo, digital, oficial">
   <meta name="author" content="Seu Nome ou Marca">
@@ -18,8 +18,6 @@
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-
-  <!-- Content Security Policy (básica) -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
 
   <style>
@@ -28,7 +26,7 @@
       padding: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #4CAF50, #2E7D32);
-      color: white;
+      color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -71,7 +69,7 @@
         box-shadow: 0 0 15px rgba(255, 214, 0, 0.6);
       }
       50% {
-        transform: scale(1.1);
+        transform: scale(1.07);
         box-shadow: 0 0 25px rgba(255, 214, 0, 0.9);
       }
       100% {
@@ -84,8 +82,13 @@
 <body>
   <h1>Seja Bem-vindo!</h1>
   <p>Clique no botão abaixo para continuar</p>
-  <button class="pulse-button" onclick="window.location.href='1.html'">
+
+  <!-- Botão com id -->
+  <button class="pulse-button" id="continueBtn" type="button">
     Continuar
   </button>
+
+  <!-- Script externo -->
+  <script src="main.js" defer></script>
 </body>
 </html>
