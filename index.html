@@ -172,11 +172,16 @@
     </div>
 
     <div class="compras-recentes" id="compras"></div>
-</div>
 
 <div class="video-tutorial">
     <h3>Vídeo ensinando como comprar o seu primeiro bilhete</h3>
-    <iframe src="https://youtu.be/fYbUIL0A6Sc?si=RQjJx91a8-4cSOtQ" title="Vídeo Tutorial" frameborder="0" allowfullscreen></iframe>
+    <iframe 
+        src="https://www.youtube.com/embed/I3eKMVOMLZg" 
+        title="Vídeo Tutorial" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+    </iframe>
 </div>
 
 <!-- Avaliações e comentários -->
@@ -281,8 +286,8 @@ function contadorAnimado(id, valorMaximo, velocidade) {
   const elemento = document.getElementById(id);
   let valor = 0;
   setInterval(() => {
-    valor += Math.floor(Math.random() * 5) + 1; // sobe de forma aleatória
-    if (valor > valorMaximo) valor = Math.floor(valorMaximo / 3); // reinicia parcial p/ parecer real
+    valor += Math.floor(Math.random() * 5) + 1;
+    if (valor > valorMaximo) valor = Math.floor(valorMaximo / 3);
     elemento.textContent = valor.toLocaleString("pt-BR");
   }, velocidade);
 }
@@ -292,11 +297,6 @@ contadorAnimado("visitas", 9999, 100);
 contadorAnimado("bilhetes", 2000, 150);
 contadorAnimado("ganhadores", 120, 2000);
 </script>
-
-
-
-
-
 
 <!-- Rodapé profissional -->
 <footer>
@@ -351,8 +351,3 @@ setInterval(atualizarCompra, 2000);
 
 </body>
 </html>
-
-
-
-
-
