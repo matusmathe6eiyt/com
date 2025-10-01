@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolha seus bilhetes</title>
+  <link rel="icon" type="image/jpeg" href="falecom.jpeg">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f7fb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Cabeçalho */
+    header {
+      width: 100%;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      box-sizing: border-box;
+    }
+    .logo {
+      max-width: 220px; 
+      height: auto;
+    }
+    .ssl {
+      max-width: 35px; 
+      height: auto;
+    }
+
+    /* Texto explicativo */
+    .intro {
+      padding: 25px 20px;
+      font-size: 19px;
+      font-weight: 600;
+      text-align: left;
+      color: #222;
+      line-height: 1.6;
+    }
+    .intro span {
+      color: #0eb8c0;
+      font-weight: 700;
+    }
+
+    /* Grade de bilhetes */
+    .bilhetes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+      gap: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .bilhete {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+      background: #e0e0e0;
+      transition: transform 0.2s ease;
+      font-size: 14px;
+    }
+    .bilhete:hover {
+      transform: scale(1.1);
+    }
+    .selecionado {
+      background: #0eb8c0;
+      color: #fff;
+    }
+    .vendido {
+      background: #ff4d4d;
+      color: #fff;
+      cursor: not-allowed;
+      position: relative;
+    }
+    .vendido::after {
+      content: "X";
+      position: absolute;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    /* Resumo e botão */
+    .resumo-container {
+      max-width: 500px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .resumo-container p {
+      font-size: 18px;
+      margin: 12px 0;
+      color: #333;
+    }
+    .resumo-container strong {
+      font-size: 22px;
+      color: #0eb8c0;
+    }
+    .btn-finalizar {
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      background: linear-gradient(135deg, #0eb8c0, #06a4a8);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.2s ease;
+    }
+    .btn-finalizar:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+    }
+
+    /* Rodapé */
+    footer {
+      width: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 30px 10px;
+      box-sizing: border-box;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    footer div {
+      margin: 10px 20px;
+      min-width: 200px;
+    }
+    footer h4 {
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: #0eb8c0;
+    }
+    footer p, footer span {
+      margin: 4px 0;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="cabecario.webp" alt="Logo" class="logo">
+  <img src="ssl.webp" alt="Verificado" class="ssl">
+</header>
+
+<div class="intro">
+  Clique nos números de bilhete que deseja comprar.<br>
+  Cada bilhete custa <span>R$ 5 no Pix</span> <span></span>.
+</div>
+
+<div class="bilhetes" id="bilhetes"></div>
+
+<div class="resumo-container">
+  <p>Quantidade selecionada: <strong id="quantidade">0</strong></p>
+  <p>Total a pagar (Pix): <strong id="total">R$ 0</strong></p>
+  <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Pagamento</button>
+</div>
+
+<footer>
+  <div>
+    <h4>Contato</h4>
+    <p>+55 85 9678-7670</p>
+    <p>Instagram: @bruxa_oficial</p>
+  </div>
+  <div>
+    <h4>Empresa</h4>
+    <p>Rifa Online Tecnologia LTDA</p>
+    <p>CNPJ: 46.792.486/0001-49</p>
+    <span>© 2025 Todos os direitos reservados</span>
+  </div>
+  <div>
+    <h4>Segurança</h4>
+    <p>Pagamento seguro via PagSeguro</p>
+    <p>Mecanismo de rifa auditável e confiável</p>
+  </div>
+</footer>
+
+<script>
+// Lista de bilhetes de 00 até 99
+const totalBilhetes = 100;
+const numeros = Array.from({length: totalBilhetes}, (_, i) => i.toString().padStart(2,"0"));
+
+// Lista fixa de bilhetes vendidos
+const vendidos = [
+  "03","07","12","18","21","27","32","36","41","45",
+  "50","53","58","61","66","70","75","78","82","85"
+];
+
+const selecionados = new Set();
+
+// renderizar bilhetes
+function renderizarBilhetes() {
+  const container = document.getElementById("bilhetes");
+
+  numeros.forEach(num => {
+    let div = document.createElement("div");
+    div.classList.add("bilhete");
+    div.textContent = num;
+
+    if (vendidos.includes(num)) {
+      div.classList.add("vendido");
+    } else {
+      div.addEventListener("click", () => {
+        if (selecionados.has(num)) {
+          selecionados.delete(num);
+          div.classList.remove("selecionado");
+        } else {
+          selecionados.add(num);
+          div.classList.add("selecionado");
+        }
+        atualizarResumo();
+      });
+    }
+    container.appendChild(div);
+  });
+}
+
+// atualizar resumo
+function atualizarResumo() {
+  let qtd = selecionados.size;
+  document.getElementById("quantidade").textContent = qtd;
+  document.getElementById("total").textContent = "R$ " + (qtd * 5).toLocaleString("pt-BR");
+}
+
+// finalizar
+function finalizarCompra() {
+  if (selecionados.size === 0) {
+    alert("Selecione pelo menos 1 bilhete.");
+    return;
+  }
+  let numerosSelecionados = Array.from(selecionados).join(",");
+  let qtd = selecionados.size;
+  let valorPix = qtd * 5;
+  let valorCartao = qtd * 10;
+  let url = `pagar.html?numeros=${encodeURIComponent(numerosSelecionados)}&quantidade=${qtd}&valor=${valorPix}&precoCartao=${valorCartao}`;
+  window.location.href = url;
+}
+
+// inicializar
+renderizarBilhetes();
+</script>
+
+</body>
+</html>

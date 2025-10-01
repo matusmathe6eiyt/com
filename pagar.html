@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento</title>
+<link rel="icon" type="image/jpeg" href="falecom.jpeg">
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+  }
+
+  /* Cabeçalho */
+  header {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #004d26;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    border-radius: 0 0 12px 12px;
+  }
+
+  header .texto-seguro { font-size: 18px; font-weight: bold; }
+  header img.ssl { max-width: 40px; height: auto; }
+
+  .pix-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .pix-section img { max-width: 80px; height: auto; }
+  .pix-section .valor { font-size: 22px; font-weight: bold; color: #004d26; }
+
+  .pix-key-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .pix-key-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    color: #555;
+  }
+
+  .pix-key-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    font-size: 18px;
+    color: #004d26;
+    font-weight: bold;
+  }
+
+  .pix-key-body .instrucao { font-size: 16px; color: #555; flex: 1; }
+  .pix-key-body .chave { font-size: 22px; font-weight: bold; margin-right: 15px; }
+  .pix-key-body .timer { font-size: 16px; color: #888; }
+
+  .qr-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .qr-container img {
+    max-width: 200px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .recebedor {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #004d26;
+  }
+
+  .resumo-numeros {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .resumo-numeros p { margin: 5px 0; font-size: 16px; color: #555; }
+  .numeros-circulo {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 50%;
+    background: #0eb8c0;
+    color: #fff;
+    font-size: 14px;
+    margin: 3px;
+  }
+
+  .instrucao-whatsapp {
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 16px;
+    text-align: center;
+    color: #555;
+  }
+
+  .btn-whatsapp {
+    display: block;
+    margin: 20px auto 40px auto;
+    padding: 15px 25px;
+    font-size: 18px;
+    background: #25D366;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-whatsapp:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="texto-seguro">Compra 100% Segura</div>
+  <img src="ssl.webp" alt="Verificado" class="ssl">
+</header>
+
+<div class="pix-section">
+  <img src="pix.webp" alt="Pix">
+  <div class="valor">R$ <span id="valorPixDisplay">0,00</span></div>
+</div>
+
+<div class="pix-key-container" onclick="copiarPix()">
+  <div class="pix-key-header">
+    <div>Chave Pix</div>
+  </div>
+  <div class="pix-key-body">
+    <div class="instrucao">Clique aqui para copiar a chave Pix</div>
+    <div class="chave" id="chavePix">85996787670</div>
+    <div class="timer" id="timer">05:00</div>
+  </div>
+</div>
+
+<div class="qr-container">
+  <img src="qr.webp" alt="QR Code">
+  <div class="recebedor">MATHEUS. P**R**A</div>
+</div>
+
+<!-- Resumo Números -->
+<div class="resumo-numeros">
+  <p><strong>Quantidade:</strong> <span id="quantidade">0</span></p>
+  <p><strong>Números escolhidos:</strong></p>
+  <div id="numerosEscolhidos"></div>
+  <p><strong>Data e Hora da Compra:</strong> <span id="dataHora"></span></p>
+</div>
+
+<div class="instrucao-whatsapp">
+  Após realizar o pagamento, clique no botão abaixo para enviar seus dados via WhatsApp e confirmar sua compra.
+</div>
+
+<a href="#" class="btn-whatsapp" id="btnWhatsapp">Enviar pelo WhatsApp</a>
+
+<script>
+  // Copiar Pix
+  function copiarPix() {
+    const chave = document.getElementById('chavePix').textContent;
+    navigator.clipboard.writeText(chave).then(() => {
+      alert('Chave Pix copiada: ' + chave);
+    });
+  }
+
+  // Temporizador
+  let totalSegundos = 5*60;
+  const timerEl = document.getElementById('timer');
+  function atualizarTimer() {
+    const minutos = Math.floor(totalSegundos/60).toString().padStart(2,'0');
+    const segundos = (totalSegundos % 60).toString().padStart(2,'0');
+    timerEl.textContent = `${minutos}:${segundos}`;
+    if(totalSegundos>0){ totalSegundos--; } 
+    else { clearInterval(intervalo); timerEl.textContent="00:00"; alert("O tempo de pagamento expirou!"); }
+  }
+  const intervalo = setInterval(atualizarTimer,1000);
+
+  // Capturar parâmetros URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const numerosParam = urlParams.get('numeros') || '';
+  const quantidade = urlParams.get('quantidade') || '0';
+  const valorPix = parseFloat(urlParams.get('valor') || '0').toLocaleString('pt-BR', {minimumFractionDigits:2});
+
+  document.getElementById('valorPixDisplay').textContent = valorPix;
+  document.getElementById('quantidade').textContent = quantidade;
+
+  // Exibir números escolhidos em círculos
+  const numerosDiv = document.getElementById('numerosEscolhidos');
+  numerosParam.split(',').forEach(num => {
+    if(num.trim() !== ''){
+      const span = document.createElement('span');
+      span.className = 'numeros-circulo';
+      span.textContent = num.trim();
+      numerosDiv.appendChild(span);
+    }
+  });
+
+  // Exibir data e hora atual
+  const now = new Date();
+  document.getElementById('dataHora').textContent = now.toLocaleString('pt-BR');
+
+  // Botão WhatsApp
+  const btnWhatsapp = document.getElementById('btnWhatsapp');
+  const numeroWhats = "5585996787670";
+  const mensagem = `Olá, finalizei meu pagamento!\nNúmeros escolhidos: ${numerosParam}\nQuantidade: ${quantidade}\nValor: R$ ${valorPix}\nData/Hora: ${now.toLocaleString('pt-BR')}`;
+  btnWhatsapp.href = `https://api.whatsapp.com/send?phone=${numeroWhats}&text=${encodeURIComponent(mensagem)}`;
+</script>
+
+</body>
+</html>
